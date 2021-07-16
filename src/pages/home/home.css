@@ -1,0 +1,22 @@
+body{
+ background-image: url('../../images/background.jpeg')
+}
+
+#logo{
+    margin: 30px;
+width: 15%;
+height: 15%;
+}
+#title{
+    text-align: center;
+    color:white;
+    font-family: 'Roboto-bold';
+    margin-top: 0;
+}
+
+.cards-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
