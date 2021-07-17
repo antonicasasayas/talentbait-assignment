@@ -1,0 +1,28 @@
+.ad-container h1, h3, p, span{
+   margin: 10px;
+}
+
+.ad-container{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid grey;
+    width: 498px;
+    background: white;
+}
+
+.ad-image{
+    width: 498px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.card-ad{
+background-size: cover;
+width: 500px;
+height: 500px;
+}
+
+.description-box{
+    background: #F0F2F5;
+}
+

@@ -1,0 +1,14 @@
+.form-container{
+    color: white;
+}
+form{
+    
+    display:flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50%;
+}
+
+form label, input, button{
+    margin: 5px;
+}

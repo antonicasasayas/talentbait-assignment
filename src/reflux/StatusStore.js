@@ -9,7 +9,7 @@ class StatusStore extends Reflux.Store {
     this.state = {
       ads: [
         {
-          id: "1",
+          id_product: "1",
           headline: "The newest dumbbells",
           description: "Train like a pro, get big like a pro",
           pictures: [
@@ -23,16 +23,16 @@ class StatusStore extends Reflux.Store {
     this.listenables = Actions;
   }
 
-  onCreate(headline, description, pictures, cta) {
+  onCreate(id_product, headline, description, pictures, cta) {
       let newAd = Object.create({
-        headline, description, pictures, cta
+        id_product, headline, description, pictures, cta
       })
       
-      this.setState({...this.state.ads, newAd})
+      this.setState({...this.state.ads.push(newAd)})
   }
 
   onEdit(id, adProperties) {
-    let index = this.state.ads.findIndex(ad=> ad.id == id);
+    let index = this.state.ads.findIndex(ad=> ad.id === id);
     this.setState({
       ads: [
          ...this.state.ads.slice(0,index),
@@ -42,7 +42,7 @@ class StatusStore extends Reflux.Store {
     });
   }
   onDelete(id) {
-    let index = this.state.ads.findIndex((ad) => ad.id == id);
+    let index = this.state.ads.findIndex((ad) => ad.id === id);
     this.setState({
       ads: [
         ...this.state.ads, ads.splice(index, 1)
@@ -52,4 +52,7 @@ class StatusStore extends Reflux.Store {
 }
 
 
-StatusStore.id = "statusStore";
+
+const adsStore = new StatusStore();
+
+export default adsStore;
