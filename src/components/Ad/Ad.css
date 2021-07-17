@@ -1,5 +1,5 @@
 .ad-container h1, h3, p, span{
-   margin: 10px;
+   margin: 20px;
 }
 
 .ad-container{
@@ -8,6 +8,7 @@
     border: 2px solid grey;
     width: 498px;
     background: white;
+    margin: 50px;
 }
 
 .ad-image{
@@ -26,3 +27,33 @@ height: 500px;
     background: #F0F2F5;
 }
 
+#header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ads-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.social-buttons span{
+    margin-left: 5px;
+    
+}
+
+.social-buttons img{
+    width: 20px;
+    height: 20px;
+}
+
+#header button{
+    margin-top: 20px;
+}

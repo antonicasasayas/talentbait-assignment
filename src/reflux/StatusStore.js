@@ -1,53 +1,49 @@
 import Reflux from "reflux";
-import ads from "../pages/ads";
-
+import ads from "../pages/ads/ads";
+import api from '../api/ads'
 var Actions = Reflux.createActions(["create", "edit", "delete"]);
 
 class StatusStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      ads: [
-        {
-          id_product: "1",
-          headline: "The newest dumbbells",
-          description: "Train like a pro, get big like a pro",
-          pictures: [
-            "https://images.pexels.com/photos/4498294/pexels-photo-4498294.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-            "https://images.pexels.com/photos/4498292/pexels-photo-4498292.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          ],
-          cta: "Buy now and get 50% off",
-        },
-      ],
+      ads: [],
     };
     this.listenables = Actions;
   }
 
-  onCreate(id_product, headline, description, pictures, cta) {
-      let newAd = Object.create({
-        id_product, headline, description, pictures, cta
-      })
+  retrieveAds = async () => {
+    const response = await api.get("/ads");
+     return this.setState({ ads: response.data});
+  };
+
+  
+    
+  
+
+  async onCreate(ad) {
+    const request = {
+      ...ad,
       
-      this.setState({...this.state.ads.push(newAd)})
+    };
+
+    const response = await api.post("/ads", request);
+    this.setState((prevState) => ({
+      ads: [...prevState.ads, response],
+    }));
   }
 
-  onEdit(id, adProperties) {
-    let index = this.state.ads.findIndex(ad=> ad.id === id);
-    this.setState({
-      ads: [
-         ...this.state.ads.slice(0,index),
-         Object.assign({}, this.state.ads[index], adProperties),
-         ...this.state.ads.slice(index+1)
-      ]
-    });
+  async onEdit(id, adProperties) {
+    
+
   }
-  onDelete(id) {
-    let index = this.state.ads.findIndex((ad) => ad.id === id);
-    this.setState({
-      ads: [
-        ...this.state.ads, ads.splice(index, 1)
-      ],
-    });
+  async onDelete(id) {
+    await api.delete(`/ads/${id}`);
+    const newAdList = this.state.ads.filter(ad => {
+        return ad.id !== id
+      })
+   
+    this.setState({ads: newAdList})
   }
 }
 

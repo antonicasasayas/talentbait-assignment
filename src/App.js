@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./pages/home/home";
-import ads from "./pages/ads";
+import ads from "./pages/ads/ads";
 import createAd from "./pages/createAd/createAd";
 import editAd from "./pages/editAd";
 

@@ -6,6 +6,7 @@ import logo from '../../images/logo.png'
 export default function home() {
     return (
       <>
+       
         <img src={logo} alt="logo" id='logo' />
        
         <h1 id="title">Product List</h1>

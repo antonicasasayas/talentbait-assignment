@@ -1,0 +1,11 @@
+.ads-page{
+display: flex;
+justify-content: flex-start;
+  
+}
+
+.ads-page button{
+    margin-top: 25px;
+    cursor: pointer;
+}
+
